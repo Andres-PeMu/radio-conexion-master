@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <a [routerLink]="['/login']" class='from_a_register'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      volver
+    </a>
+    <ion-title>
+      Registrarse
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen='true' scrollX='false' scrollY='false'>
+  <form [formGroup]="registerUser" (ngSubmit)="register()" class='form_login'>
+    <ion-item>
+      <ion-label position="floating">Nombres:</ion-label>
+      <ion-input type="text" required formControlName="name" name="name"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('name').hasError('required') && registerUser.get('name').touched">El Nombres es requerido</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellidos:</ion-label>
+      <ion-input type="text" required formControlName="lastname" name="lastname"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('lastname').hasError('required') && registerUser.get('lastname').touched">El Apellidos es requerido</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email:</ion-label>
+      <ion-input type="email" required formControlName="email" name="email"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('email').hasError('required') && registerUser.get('email').touched">El Email es requerido</ion-text>
+      <ion-text color="danger" *ngIf="registerUser.get('email').hasError('email') && registerUser.get('email').touched">El Email es invalido</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password:</ion-label>
+      <ion-input type="password" required formControlName="password" name="password"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('password').hasError('required') && registerUser.get('password').touched">El Password es requerido</ion-text>
+      <ion-text color="danger" *ngIf="registerUser.get('password').hasError('minlength') && registerUser.get('password').touched">Minimo (6) caracteres</ion-text>
+    </ion-item>
+    <ion-item class="ion-item-birthdays">
+      <ion-label position="floating">Cumpleaños:</ion-label>
+      <ion-input type="date" required formControlName="birthday" name="birthday"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('birthday').hasError('required') && registerUser.get('birthday').touched">El Cumpleaños es requerido</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Genero:</ion-label>
+      <ion-input type="text" required formControlName="genders" name="genders"></ion-input>
+      <ion-text color="danger" *ngIf="registerUser.get('genders').hasError('required') && registerUser.get('genders').touched">El Genero es requerido</ion-text>
+    </ion-item>
+    <p class="ion-text-center">
+      <ion-button color="secondary" expand="block" class='ion-margin-top' type="submit" [disabled]="registerUser.invalid">Registrate</ion-button>
+    </p>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Radio Conexion
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

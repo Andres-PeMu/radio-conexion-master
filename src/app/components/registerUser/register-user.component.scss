@@ -1,0 +1,30 @@
+ion-header{
+  ion-toolbar{
+    a {
+      background-color: transparent;
+      color: var(--ion-color-secondary-contrast, #3880ff);
+      text-decoration: none;
+      font-size: 24px;
+      ion-icon{
+        color: var(--ion-color-secondary-contrast);
+        font-size: 30px;
+        margin: -8px 8px;
+      }
+    }
+  }
+}
+.form_login{
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.from_a_register{
+    text-decoration: none;
+}
+
+.ion-item-birthdays{
+  ion-label{
+    margin-bottom: 20px;
+  }
+}

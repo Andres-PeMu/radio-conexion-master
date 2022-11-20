@@ -1,0 +1,7 @@
+{
+  "name": "RadioConexion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

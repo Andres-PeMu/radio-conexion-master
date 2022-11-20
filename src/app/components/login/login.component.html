@@ -1,0 +1,50 @@
+<ion-content fullscreen='true' scrollX='false' scrollY='false'>
+  <div class="header-border-radius-blue"></div>
+  <div class="header-border-radius-white"></div>
+  <div class="form_content">
+    <form class='form_login' [formGroup]="loginUser" (ngSubmit)="login()" class='form_login'>
+      <div class="form_login_content">
+        <ion-card>
+          <ion-item>
+            <ion-label position="floating">Email:</ion-label>
+            <ion-input type="email" required formControlName="email" name="email"></ion-input>
+            <ion-text color="danger"
+              *ngIf="loginUser.get('email').hasError('required') && loginUser.get('email').touched">
+              El Email es requerido</ion-text>
+            <ion-text color="danger" *ngIf="loginUser.get('email').hasError('email') && loginUser.get('email').touched">
+              El
+              Email es invalido</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password:</ion-label>
+            <ion-input type="password" required formControlName="password" name="password"></ion-input>
+            <ion-text color="danger"
+              *ngIf="loginUser.get('password').hasError('required') && loginUser.get('password').touched">El Password es
+              requerido</ion-text>
+            <ion-text color="danger"
+              *ngIf="loginUser.get('password').hasError('minlength') && loginUser.get('password').touched">Minimo (6)
+              caracteres</ion-text>
+          </ion-item>
+          <a [routerLink]="['/recuperarContraseña']" class='from_a_register'>Recuperar Contraseña</a>
+          <p class="ion-text-center">
+            <ion-button expand="block" class='ion-margin-top' type="submit" [disabled]="loginUser.invalid">
+              <p>siguiente</p>   
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+          </p>
+          <p class="ion-text-center">
+            ¿No tienes cuenta? <a [routerLink]="['/registrarUsuario']" class='from_a_register'> Registrate</a>
+          </p>
+        </ion-card>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Radio Conexion
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

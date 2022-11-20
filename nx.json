@@ -1,0 +1,44 @@
+{
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "NTNiODY5ZDItNjE5NS00NGI4LTlkN2UtNTRjZTQ1ZGFkY2QwfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "projects",
+    "libsDir": "projects"
+  },
+  "cli": {
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ],
+    "analytics": "14adec4b-446c-4424-b725-f5f452b8a69a"
+  },
+  "defaultProject": "app"
+}

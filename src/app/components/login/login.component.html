@@ -1,11 +1,16 @@
-<ion-content fullscreen='true' scrollX='false' scrollY='false'>
-  <div class="header-border-radius-blue"></div>
-  <div class="header-border-radius-white"></div>
+<ion-header>
+
+</ion-header>
+
+<ion-content fullscreen='true' scrollX='false' scrollY='false' class="ion-padding ion-text-center" color="primary">
+  <!-- <div class="header-border-radius-blue"></div>
+  <div class="header-border-radius-white"></div> -->
+  <img src="../../../assets/images/completo sin fondo.png" />
   <div class="form_content">
-    <form class='form_login' [formGroup]="loginUser" (ngSubmit)="login()" class='form_login'>
+    <form class='form_login' [formGroup]="loginUser" (ngSubmit)="login()" class='form_login' >
       <div class="form_login_content">
-        <ion-card>
-          <ion-item>
+        <ion-card color="primary">
+          <ion-item color="primary">
             <ion-label position="floating">Email:</ion-label>
             <ion-input type="email" required formControlName="email" name="email"></ion-input>
             <ion-text color="danger"
@@ -15,7 +20,7 @@
               El
               Email es invalido</ion-text>
           </ion-item>
-          <ion-item>
+          <ion-item color="primary">
             <ion-label position="floating">Password:</ion-label>
             <ion-input type="password" required formControlName="password" name="password"></ion-input>
             <ion-text color="danger"
@@ -28,7 +33,7 @@
           <a [routerLink]="['/recuperarContraseña']" class='from_a_register'>Recuperar Contraseña</a>
           <p class="ion-text-center">
             <ion-button expand="block" class='ion-margin-top' type="submit" [disabled]="loginUser.invalid">
-              <p>siguiente</p>   
+              <p>siguiente</p>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </ion-button>
           </p>

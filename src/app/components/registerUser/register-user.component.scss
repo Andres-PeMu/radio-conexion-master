@@ -1,30 +1,57 @@
-ion-header{
-  ion-toolbar{
-    a {
-      background-color: transparent;
-      color: var(--ion-color-secondary-contrast, #3880ff);
-      text-decoration: none;
-      font-size: 24px;
-      ion-icon{
-        color: var(--ion-color-secondary-contrast);
-        font-size: 30px;
-        margin: -8px 8px;
+ion-header {
+  ion-toolbar {
+    .toolbar-a-img {
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: space-between;
+      a {
+        background-color: transparent;
+        color: var(--ion-color-secondary-contrast, #3880ff);
+        text-decoration: none;
+        font-size: 24px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        ion-icon {
+          color: var(--ion-color-secondary-contrast);
+          font-size: 30px;
+          margin: -8px 8px;
+        }
+      }
+      img {
+        height: 100px;
+      }
+      @media (min-width: 768px) {
+        img {
+          margin: 0px auto;
+          height: 150px;
+        }
       }
     }
   }
 }
-.form_login{
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+
+.form_login {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--ion-color-primary);
+  box-sizing: border-box;
+  padding: 16px;
+  @media (min-width: 768px) {
+    width: 50%;
+    margin-left: 25%;
+  }
 }
 
-.from_a_register{
-    text-decoration: none;
+.from_a_register {
+  text-decoration: none;
 }
 
-.ion-item-birthdays{
-  ion-label{
+.ion-item-birthdays {
+  ion-label {
     margin-bottom: 20px;
   }
 }

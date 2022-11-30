@@ -65,6 +65,10 @@ ion-content {
   .form_content {
     position: relative;
     top: -51vh;
+    @media (min-width: 320px) and (max-width: 1024px) {
+      max-width: 350px;
+      margin: 0 auto;
+    }
     @media (min-width: 768px) and (max-width: 1024px) {
       position: relative;
       top: -66vh;

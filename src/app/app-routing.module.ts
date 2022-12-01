@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./components/login/login.module').then(m => m.LoginComponentModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginComponentModule)
   },
   {
     path: 'recuperarEmail',
@@ -17,11 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'recuperarContraseña',
-    loadChildren: () => import('./components/recover-password/recover-password.module').then(m => m.RecoverPasswordComponentModule)
+    loadChildren: () => import('./pages/recover-password/recover-password.module').then(m => m.RecoverPasswordComponentModule)
   },
   {
     path: 'registrarUsuario',
-    loadChildren: () => import('./components/registerUser/register-user.module').then(m => m.RegisterUserComponentModule)
+    loadChildren: () => import('./pages/registerUser/register-user.module').then(m => m.RegisterUserComponentModule)
   },
   {
     path: 'tab0',

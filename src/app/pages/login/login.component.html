@@ -30,7 +30,7 @@
           </ion-item>
           <a [routerLink]="['/recuperarContraseña']" class='from_a_register ion-margin-top'>Recuperar Contraseña</a>
           <p class="ion-text-center">
-            <ion-button expand="block" class='ion-margin-top' type="submit" [disabled]="loginUser.invalid">
+            <ion-button expand="block" class='ion-margin-top' type="submit" [disabled]="loginUser.invalid" (click)="login()">
               <p>siguiente</p>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </ion-button>
@@ -38,6 +38,7 @@
           <p class="ion-text-center">
             ¿No tienes cuenta? <a [routerLink]="['/registrarUsuario']" class='from_a_register'> Registrate</a>
           </p>
+          <app-with-google></app-with-google>
         </ion-card>
       </div>
     </form>

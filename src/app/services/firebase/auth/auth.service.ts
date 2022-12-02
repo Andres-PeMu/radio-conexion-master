@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   sendPasswordResetEmail,
   sendEmailVerification,
 } from '@angular/fire/auth';
@@ -43,4 +44,7 @@ export class AuthService {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   };
 
+  loginWinthFacebook(){
+    return signInWithPopup(this.auth, new FacebookAuthProvider());
+  };
 }

@@ -9,10 +9,10 @@
     </div>
   </ion-toolbar>
 </ion-header>
-
+<ion-refresher-content *ngIf="loading"></ion-refresher-content>
 <ion-content fullscreen='true' scrollX='false' scrollY='false' class="ion-text-center ion-margin ion-padding"
-  color="white">
-  <form [formGroup]="registerUser" (ngSubmit)="register()" class='form_login'>
+  color="white" *ngIf="!loading">
+  <form [formGroup]="registerUser" (ngSubmit)="register()" class='form_login' *ngIf="!isOpen">
     <ion-item color="white">
       <ion-label position="floating">Nombres:</ion-label>
       <ion-input type="text" required formControlName="name" name="name"></ion-input>
@@ -62,9 +62,16 @@
     </ion-item>
     <p class="ion-text-center">
       <ion-button color="secondary" expand="block" class='ion-margin-top' type="submit"
-        [disabled]="registerUser.invalid">Registrate</ion-button>
+        [disabled]="registerUser.invalid">
+        Registrate
+      </ion-button>
     </p>
   </form>
+  <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+    <ng-template>
+      <p class="ion-padding">{{ messageError }}</p>
+    </ng-template>
+  </ion-popover>
 </ion-content>
 
 <ion-footer>

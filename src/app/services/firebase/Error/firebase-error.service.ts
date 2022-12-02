@@ -29,8 +29,10 @@ export class FirebaseErrorService {
         return 'Otro usuario ya utiliza el phoneNumber proporcionado.';
       case 'auth/email-already-in-use':
         return 'usuario ya existe.';
-      case 'auth/weak-password':
-        return 'usuario ya existe.';
+      case 'auth/wrong-password':
+        return 'El valor del password no es válido.';
+      case 'auth/user-not-found':
+        return 'usuario no existe';
       default:
         return 'error desconocido.';
     }

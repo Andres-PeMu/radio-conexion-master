@@ -5,7 +5,7 @@
     <img src="../../../assets/images/completo sin fondo.png" class="ion-margin ion-padding img-login" />
   </div>
   <div class="form_content ion-margin-top">
-    <form class='form_login' [formGroup]="loginUser" (ngSubmit)="login()" class='form_login'>
+    <form class='form_login' [formGroup]="loginUser" (ngSubmit)="login()" class='form_login' *ngIf="!isOpen">
       <div class="form_login_content">
         <ion-card color="white">
           <ion-item color="white">
@@ -42,6 +42,11 @@
         </ion-card>
       </div>
     </form>
+    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+        <p class="ion-padding">{{ messageError }}</p>
+      </ng-template>
+    </ion-popover>
   </div>
 </ion-content>
 

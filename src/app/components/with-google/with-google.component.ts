@@ -22,4 +22,11 @@ export class WithGoogleComponent implements OnInit {
     });
   }
 
+  facebookAuth(){
+    this.authService.loginWinthFacebook().then((res: any) =>{
+      console.log(res);
+      this.router.navigate(['/tab0']);
+    });
+  }
+
 }

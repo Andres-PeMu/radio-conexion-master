@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.andresdev.radioconexion;
 
 import com.getcapacitor.BridgeActivity;
 

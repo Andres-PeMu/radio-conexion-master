@@ -19,7 +19,7 @@ export class FirebaseErrorService {
         return 'Se proporcionó un argumento no válido.';
       case 'auth/invalid-email':
         return 'El valor de email no es válido.';
-      case 'auth/invalid-email-verified':
+      case 'auth/missing-email':
         return 'El valor que se proporcionó no es válido.';
       case 'auth/invalid-password':
         return 'El valor del password no es válido.';

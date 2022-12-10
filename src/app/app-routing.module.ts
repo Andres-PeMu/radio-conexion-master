@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginComponentModule)
   },
   {
-    path: 'recuperarEmail',
+    path: 'validarEmail',
     loadChildren: () => import('./components/check-mail/check-mail.module').then(m => m.CheckMailModule)
   },
   {

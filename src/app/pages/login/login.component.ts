@@ -31,17 +31,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   login() {
-    console.log(this.loginUser.value.email);
     this.loading = true;
     this.firebaseAuth.login({
       email: this.loginUser.value.email,
       password: this.loginUser.value.password,
     }).then((user)=>{
       this.loading = false;
+      console.log(user);
+      console.log(user.user.emailVerified);
       if(user.user.emailVerified){
-        this.router.navigate(['/tab0']);
+        return this.router.navigate(['/tab0']);
       }
-      this.router.navigate(['/recuperarEmail']);
+      if(!user.user.emailVerified){
+        return this.router.navigate(['/validarEmail']);
+      }
     }).catch((error)=>{
       this.loading = false;
       console.log(error.code);

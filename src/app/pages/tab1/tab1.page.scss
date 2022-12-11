@@ -2,36 +2,26 @@ ion-header {
   margin: -3px auto;
   padding: 37px 0px;
   background: var(--ion-color-primary);
-  .header-icon-notific {
-    ion-icon {
-      position: absolute;
-      background: var(--ion-color-primary);
-      color: var(--ion-color-secondary-contrast);
-      top: 20px;
-      left: 340px;
-      width: 24px;
-      height: 24px;
-      padding: 12px;
-      border-radius: 50%;
-    }
+  ion-icon {
+    color: var(--ion-color-secondary-contrast);
+    width: 28px;
+    height: 28px;
+    padding: 12px;
+    border-radius: 50%;
   }
 }
 
 ion-content {
   margin: 0px;
   padding: 0px;
-  background: var(--ion-color-secondary-a);
-  ion-card {
+  --background: var(--ion-color-secondary-a);
+ /*  ion-card {
     margin: 18px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(
-      90deg,
-      var(--ion-color-primary) 27%,
-      var(--ion-color-medium) 73%
-      );
+    background: var(--ion-color-primary);
     ion-card-header {
       display: flex;
       align-content: center;
@@ -61,5 +51,5 @@ ion-content {
   }
   .progress-bar-tap1 {
     margin: 0px 25% 0px 25%;
-  }
+  } */
 }

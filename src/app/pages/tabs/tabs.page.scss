@@ -1,1 +1,17 @@
-
+ion-tab-bar{
+  --background: var(--ion-color-primary);
+  ion-tab-button{
+    ion-icon{
+      color: var(--ion-color-secondary-contrast);
+    }
+  }
+  ion-button{
+    width: 100px;
+    height: 100px;
+    ion-icon{
+      width: 85px;
+      height: 85px;
+      padding: 0px;
+    }
+  }
+}

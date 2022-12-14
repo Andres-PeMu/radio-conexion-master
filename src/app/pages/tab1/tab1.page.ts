@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
 
 import { Router } from '@angular/router';
@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-
+  data= [];
   isModalOpen = false;
-  public data= [];
-  public results= [...this.data];
+
 
 
   constructor(
@@ -20,15 +19,9 @@ export class Tab1Page implements OnInit {
     private router: Router,
     ) {}
 
-
-
-
-
   ngOnInit(): void {
     this.firestoreService.getNews().subscribe(news => {
-      console.log(news);
       this.data= news;
-      this.results= [...this.data];
     });
   }
 

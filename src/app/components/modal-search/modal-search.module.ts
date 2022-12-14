@@ -6,17 +6,19 @@ import { IonicModule } from '@ionic/angular';
 
 import { ModalSearchComponent } from './modal-search.component';
 import { ModalSearchRoutingModule } from './modal-search-routing.module';
+import { NewsCardModule } from '../news-card/news-card.module';
 
 
 @NgModule({
-  declarations: [ModalSearchComponent],
-  imports: [
-    CommonModule,
-    ModalSearchRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IonicModule
-  ],
-  exports: [ModalSearchComponent]
+    declarations: [ModalSearchComponent],
+    exports: [ModalSearchComponent],
+    imports: [
+        CommonModule,
+        ModalSearchRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        IonicModule,
+        NewsCardModule
+    ]
 })
 export class ModalSearchModule { }

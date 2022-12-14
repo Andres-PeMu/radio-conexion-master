@@ -26,8 +26,10 @@ export class ModalSearchComponent implements OnInit {
 
   handleChange(event) {
     const query = event.target.value.toLowerCase();
-    this.results = this.data.filter(d => d.title.toLowerCase().indexOf(query) > -1);
-    console.log(this.results);
+    if(query.length !== 0){
+      return this.results = this.data.filter(d => d.title.toLowerCase().indexOf(query) > -1);
+    }
+    return this.results= [];
   }
 
 }

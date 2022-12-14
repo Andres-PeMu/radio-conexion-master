@@ -1,72 +1,81 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <div class="toolbar-a-img">
-      <img src="../../../assets/images/completo sin fondo.png" class="ion-margin ion-padding img-login" />
-    </div>
-  </ion-toolbar>
-  <ion-content fullscreen='true' scrollX='false' color="white" *ngIf="!loading" class=" ion-margin-top ion-padding-top">
-    <form [formGroup]="registerNewNews" (ngSubmit)="register()" class='form_login' *ngIf="!isOpen">
-      <ion-item color="white">
-        <ion-label position="floating">Titulo:</ion-label>
-        <ion-input type="text" required formControlName="title" name="title"></ion-input>
-        <ion-text color="danger"
-          *ngIf="registerNewNews.get('title').hasError('required') && registerNewNews.get('title').touched">El Titulo es
-          requerido</ion-text>
-      </ion-item>
-      <ion-item color="white">
-        <ion-label position="floating">Url imagen:</ion-label>
-        <ion-input type="text" required formControlName="urlImage" name="urlImage"></ion-input>
-        <ion-text color="danger"
-          *ngIf="registerNewNews.get('urlImage').hasError('required') && registerNewNews.get('urlImage').touched">La Url
-          imagen
-          es requerido</ion-text>
-      </ion-item>
-      <ion-item color="white">
-        <ion-label position="floating">Subtitulo:</ion-label>
-        <ion-input type="text" required formControlName="subTitle" name="subTitle"></ion-input>
-        <ion-text color="danger"
-          *ngIf="registerNewNews.get('subTitle').hasError('required') && registerNewNews.get('subTitle').touched">El
-          Subtitulo es
-          requerido</ion-text>
-      </ion-item>
-      <ion-item color="white">
-        <ion-label position="floating">Resumen de la Descripción:</ion-label>
-        <ion-textarea placeholder="Type something here" [autoGrow]="true" type="text" required
-          formControlName="summaryDescription" name="summaryDescription"></ion-textarea>
-        <ion-text color="danger"
-          *ngIf="registerNewNews.get('summaryDescription').hasError('required') && registerNewNews.get('summaryDescription').touched">La
-          Descripción es
-          requerido</ion-text>
-      </ion-item>
-      <ion-item color="white">
-        <ion-label position="floating">Descripción:</ion-label>
-        <ion-textarea placeholder="Type something here" [autoGrow]="true" type="text" required
-          formControlName="description" name="description"></ion-textarea>
-        <ion-text color="danger"
-          *ngIf="registerNewNews.get('description').hasError('required') && registerNewNews.get('description').touched">La
-          Descripción es
-          requerido</ion-text>
-      </ion-item>
-      <p class="ion-text-center">
+<ion-icon id="open-modal" slot="end" size="large" name="add-circle-outline"></ion-icon>
+
+<ion-modal trigger="open-modal" (willDismiss)="newNews($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-item>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+              <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content scrollY='true'>
+      <ion-toolbar color="secondary">
+        <div class="toolbar-a-img">
+          <img src="../../../assets/images/completo sin fondo.png" class="ion-margin ion-padding img-login" />
+        </div>
+      </ion-toolbar>
+      <form [formGroup]="registerNewNews" (ngSubmit)="register()" class='form_login' *ngIf="!isOpen">
+        <ion-item color="white">
+          <ion-label position="floating">Titulo:</ion-label>
+          <ion-input type="text" required formControlName="title" name="title"></ion-input>
+          <ion-text color="danger"
+            *ngIf="registerNewNews.get('title').hasError('required') && registerNewNews.get('title').touched">El
+            Titulo es
+            requerido</ion-text>
+        </ion-item>
+        <ion-item color="white">
+          <ion-label position="floating">Url imagen:</ion-label>
+          <ion-input type="text" required formControlName="urlImage" name="urlImage"></ion-input>
+          <ion-text color="danger"
+            *ngIf="registerNewNews.get('urlImage').hasError('required') && registerNewNews.get('urlImage').touched">La
+            Url
+            imagen
+            es requerido</ion-text>
+        </ion-item>
+        <ion-item color="white">
+          <ion-label position="floating">Subtitulo:</ion-label>
+          <ion-input type="text" required formControlName="subTitle" name="subTitle"></ion-input>
+          <ion-text color="danger"
+            *ngIf="registerNewNews.get('subTitle').hasError('required') && registerNewNews.get('subTitle').touched">El
+            Subtitulo es
+            requerido</ion-text>
+        </ion-item>
+        <ion-item color="white">
+          <ion-label position="floating">Resumen de la Descripción:</ion-label>
+          <ion-textarea placeholder="Type something here" [autoGrow]="true" type="text" required
+            formControlName="summaryDescription" name="summaryDescription"></ion-textarea>
+          <ion-text color="danger"
+            *ngIf="registerNewNews.get('summaryDescription').hasError('required') && registerNewNews.get('summaryDescription').touched">
+            La
+            Descripción es
+            requerido</ion-text>
+        </ion-item>
+        <ion-item color="white">
+          <ion-label position="floating">Descripción:</ion-label>
+          <ion-textarea placeholder="Type something here" [autoGrow]="true" type="text" required
+            formControlName="description" name="description"></ion-textarea>
+          <ion-text color="danger"
+            *ngIf="registerNewNews.get('description').hasError('required') && registerNewNews.get('description').touched">
+            La
+            Descripción es
+            requerido</ion-text>
+        </ion-item>
         <ion-button color="secondary" expand="block" class='ion-margin-top' type="submit"
           [disabled]="registerNewNews.invalid">
           Guardar
         </ion-button>
-      </p>
-    </form>
-    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
-      <ng-template>
-        <p class="ion-padding">{{ messageError }}</p>
-      </ng-template>
-    </ion-popover>
-      <ion-footer>
-    <ion-toolbar color="secondary">
-      <ion-title>
-        Radio Conexion
-      </ion-title>
-    </ion-toolbar>
-  </ion-footer>
-  </ion-content>
-</ion-header>
-<ion-refresher-content *ngIf="loading"></ion-refresher-content>
-
+      </form>
+      <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+        <ng-template>
+          <p class="ion-padding">{{ messageError }}</p>
+        </ng-template>
+      </ion-popover>
+    </ion-content>
+  </ng-template>
+  <ion-refresher-content *ngIf="loading"></ion-refresher-content>
+</ion-modal>

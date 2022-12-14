@@ -1,0 +1,18 @@
+ion-content {
+    margin: 0px;
+    padding: 0px;
+    --background: var(--ion-color-secondary-a);
+    ion-card{
+        ion-item{
+          img{
+            height: 35px;
+            margin: 0;
+            padding: 0;
+          }
+          ion-card-title{
+            font-size: 20px;
+            margin-left: 8px;
+          }
+        }
+    }
+  }

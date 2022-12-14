@@ -6,6 +6,7 @@ import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ModalNewNewsModule } from '../../components/modal-new-news/modal-new-news.module';
+import { ModalSearchModule } from '../../components/modal-search/modal-search.module';
 
 @NgModule({
     declarations: [Tab1Page],
@@ -14,7 +15,8 @@ import { ModalNewNewsModule } from '../../components/modal-new-news/modal-new-ne
         CommonModule,
         FormsModule,
         Tab1PageRoutingModule,
-        ModalNewNewsModule
+        ModalNewNewsModule,
+        ModalSearchModule
     ]
 })
 export class Tab1PageModule {}

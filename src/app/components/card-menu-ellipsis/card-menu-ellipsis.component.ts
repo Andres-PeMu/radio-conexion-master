@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import News from 'src/app/interface/news.interface';
+import News from 'src/app/interface/News.interface';
 
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';

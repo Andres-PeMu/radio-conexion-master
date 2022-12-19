@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc } from '@angular/fire/firestore';
-import News from 'src/app/interface/news.interface';
+import News from 'src/app/interface/News.interface';
 
 @Injectable({
   providedIn: 'root'

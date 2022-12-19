@@ -3,7 +3,7 @@ import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.
 
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
-import News from 'src/app/interface/news.interface';
+import News from 'src/app/interface/News.interface';
 
 @Component({
   selector: 'app-news-card',

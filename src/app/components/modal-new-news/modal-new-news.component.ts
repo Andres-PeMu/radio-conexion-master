@@ -50,6 +50,7 @@ export class ModalNewNewsComponent implements OnInit {
       this.loading = false;
       this.messageError = 'Guardado con exito';
       this.isOpen = true;
+      this.modal.dismiss(null, 'cancel');
     }).catch((error)=>{
       this.loading = false;
       this.messageError = this.codeError.firebaseError(error.code);

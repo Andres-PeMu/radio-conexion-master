@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import News from 'src/app/interface/news.interface';
 
 @Injectable({
@@ -19,4 +19,15 @@ export class FirestoreService {
     const newsRef = collection(this.firestore, 'news');
     return collectionData(newsRef, { idField: 'id' }) as Observable<News[]>;
   }
+
+  deleteNews(news: News){
+    const newsDocRef = doc(this.firestore, `news/${news.id}`);
+    return deleteDoc(newsDocRef);
+  }
+
+  editNews(news){
+    const newsDocRef = doc(this.firestore, `news/${news.id}`);
+    return updateDoc(newsDocRef, news);
+  }
+
 }

@@ -1,17 +1,17 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
+import News from 'src/app/interface/news.interface';
 
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
-import News from 'src/app/interface/news.interface';
+import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
 
 @Component({
-  selector: 'app-news-card',
-  templateUrl: './news-card.component.html',
-  styleUrls: ['./news-card.component.scss'],
+  selector: 'app-card-menu-ellipsis',
+  templateUrl: './card-menu-ellipsis.component.html',
+  styleUrls: ['./card-menu-ellipsis.component.scss'],
 })
-export class NewsCardComponent implements OnInit {
-  @Input() data= [];
+export class CardMenuEllipsisComponent implements OnInit {
+  @Input() dat: News;
   @ViewChild(IonModal) modal: IonModal;
 
   constructor(

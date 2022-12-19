@@ -2,7 +2,9 @@
   <ion-item lines="full" color="secondary">
     <img src="../../../assets/images/conexion sin fondo.png" class="ion-margin ion-padding img-login" />
     <ion-card-title>{{dat.title}}</ion-card-title>
-    <ion-icon name="ellipsis-horizontal-outline" slot="end"></ion-icon>
+
+    <app-card-menu-ellipsis slot="end" [dat]="dat" ></app-card-menu-ellipsis>
+
   </ion-item>
   <img alt="Silhouette of mountains" src="{{dat.image}}" />
   <ion-card-header>

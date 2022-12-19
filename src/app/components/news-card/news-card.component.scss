@@ -9,5 +9,8 @@ ion-card{
         font-size: 20px;
         margin-left: 8px;
       }
+      ion-select::part(icon) {
+        display: none !important;
+      }
     }
 }

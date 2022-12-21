@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import News from 'src/app/interface/News.interface';
 
 @Component({
   selector: 'app-tab2',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class Tab2Page {
 
   constructor() {}
+
+  datDetail(dat){
+    console.log(dat);
+  }
 
 }

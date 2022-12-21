@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 import News from 'src/app/interface/News.interface';
 
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.
 })
 export class CardMenuEllipsisComponent implements OnInit {
   @Input() dat: News;
+  @Output() datDetail = new EventEmitter<News>();
   @ViewChild(IonModal) modal: IonModal;
 
   constructor(
@@ -21,7 +22,8 @@ export class CardMenuEllipsisComponent implements OnInit {
 
   ngOnInit() {}
 
-  detailNews(){
+  detailNews(dat: News){
+    this.datDetail.emit(dat);
     this.router.navigate(['tab0/tab2']);
     this.modal.dismiss(null, 'cancel');
   }

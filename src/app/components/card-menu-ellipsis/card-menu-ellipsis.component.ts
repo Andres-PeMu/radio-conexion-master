@@ -4,6 +4,7 @@ import News from 'src/app/interface/News.interface';
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
+import { DataService } from 'src/app/services/servicesData/data.service';
 
 @Component({
   selector: 'app-card-menu-ellipsis',
@@ -12,18 +13,19 @@ import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.
 })
 export class CardMenuEllipsisComponent implements OnInit {
   @Input() dat: News;
-  @Output() datDetail = new EventEmitter<News>();
   @ViewChild(IonModal) modal: IonModal;
 
   constructor(
     private firestoreService: FirestoreService,
+    public dataService: DataService,
     private router: Router,
   ) { }
 
   ngOnInit() {}
 
   detailNews(dat: News){
-    this.datDetail.emit(dat);
+    console.log(dat);
+    this.dataService.cardMenuEllipsis(dat);
     this.router.navigate(['tab0/tab2']);
     this.modal.dismiss(null, 'cancel');
   }

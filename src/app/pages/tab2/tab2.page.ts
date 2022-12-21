@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import News from 'src/app/interface/News.interface';
+import { DataService } from 'src/app/services/servicesData/data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,10 +9,8 @@ import News from 'src/app/interface/News.interface';
 })
 export class Tab2Page {
 
-  constructor() {}
-
-  datDetail(dat){
-    console.log(dat);
-  }
+  constructor(
+    public dataService: DataService
+  ) {}
 
 }

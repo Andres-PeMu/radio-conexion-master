@@ -3,8 +3,8 @@ export default interface User {
   photoURL: string;
   name: string;
   lastName: string;
-  mail: string;
+  email: string;
   password: string;
-  birthday: Date;
+  birthday: string;
   gender: string;
 }

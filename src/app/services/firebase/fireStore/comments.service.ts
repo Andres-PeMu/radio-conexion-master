@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc, getDoc, setDoc } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs';
+
 import Comment from 'src/app/interface/comment.interface';
 
 @Injectable({
@@ -11,7 +14,7 @@ export class CommentsService {
 
   async addComment(comment) {
     const commentsRef = collection(this.firestore, `${comment.id.toString()}`);
-    await setDoc(doc(commentsRef), {
+    return await addDoc(commentsRef, {
       id: comment.id,
       photoURL: comment.photoURL,
       name: comment.name,
@@ -19,6 +22,13 @@ export class CommentsService {
       comment: comment.comment,
     });
   }
+
+  getComment(comment) {
+    console.log(comment);
+    const commentsRef = collection(this.firestore, `${comment.id.toString()}`);
+    return collectionData(commentsRef, { idField: 'id' }) as Observable<any>;
+  }
+
 
 }
 

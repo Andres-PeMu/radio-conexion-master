@@ -13,7 +13,6 @@ import News from 'src/app/interface/News.interface';
 export class NewsCardComponent implements OnInit {
   @Input() data= [];
   @ViewChild(IonModal) modal: IonModal;
-
   constructor(
     private firestoreService: FirestoreService,
     private router: Router,

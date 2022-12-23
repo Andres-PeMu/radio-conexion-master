@@ -1,4 +1,7 @@
-<ion-icon size="small" button="true" name="terminal-outline" slot="end" [id]="dat.id + dat.id"></ion-icon>
+<ion-item>
+  <ion-badge slot="end">{{ numberComments }}</ion-badge>
+  <ion-icon size="small" button="true" name="terminal-outline" slot="end" [id]="dat.id + dat.id"></ion-icon>
+</ion-item>
 <ion-modal id="example-modal" #modal [trigger]="dat.id + dat.id">
   <ng-template>
     <ion-header>
@@ -14,40 +17,13 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>
+        <ion-item *ngFor=" let datcomment of comments">
           <ion-avatar slot="start">
-            <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+            <ion-img src="{{ datcomment.photoURL }}"></ion-img>
           </ion-avatar>
           <ion-label>
-            <h2>Connor Smith</h2>
-            <ion-textarea class=" ion-margin-top " disabled="true" >Sales Rep Felipe ckdkdmckdmckdmckdmckdmckmdckdmkcmdkcmdkmckdmckdmckdmckdmckdmckdmckdmckdmcd</ion-textarea>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Daniel Smith</h2>
-            <p>Product Designer</p>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Greg Smith</h2>
-            <p>Director of Operations</p>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Zoey Smith</h2>
-            <p>CEO</p>
+            <h2>{{ datcomment.name }}</h2>
+            <ion-textarea class=" ion-margin-top " disabled="true" >{{ datcomment.comment }}</ion-textarea>
           </ion-label>
         </ion-item>
       </ion-list>

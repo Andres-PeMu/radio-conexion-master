@@ -13,16 +13,29 @@ export class CommentTerminalOutComponent implements OnInit {
   @Input() dat: News;
   @ViewChild(IonModal) modal: IonModal;
   comment: string;
+  comments: any;
+  numberComments: number;
 
   constructor(
     private commentsService: CommentsService,
     private dataUser: UserDataService
-    ) { }
+  ) { }
 
   ngOnInit() {
+    this.commentsService.getComment({
+      id: this.dat.id,
+      photoURL: this.dataUser.photoURL,
+      name: this.dataUser.name,
+      lastName: this.dataUser.lastName,
+      comment: 'todo funciona bien',
+      email: this.dataUser.email
+    }).subscribe(comments => {
+      this.comments = comments;
+      this.numberComments = comments.length;
+    });
   }
 
-  save(dat: News){
+  save(dat: News) {
     this.commentsService.addComment({
       id: dat.id,
       photoURL: this.dataUser.photoURL,

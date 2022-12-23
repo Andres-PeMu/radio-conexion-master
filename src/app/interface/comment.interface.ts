@@ -3,4 +3,5 @@ export default interface Comment {
   photoURL?: string;
   name?: string;
   lastName?: string;
+  comment: string;
 }

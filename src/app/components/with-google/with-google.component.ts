@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/firebase/fireStore/user.service';
+import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 @Component({
   selector: 'app-with-google',
   templateUrl: './with-google.component.html',
@@ -13,6 +14,7 @@ export class WithGoogleComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private firestore: UserService,
+    private dataUser: UserDataService,
   ) { }
 
   ngOnInit() {}
@@ -21,6 +23,15 @@ export class WithGoogleComponent implements OnInit {
     this.authService.loginWinthGoogle()
     .then((user) =>{
       this.firestore.addUser({
+        photoURL: user.user.photoURL,
+        name: user.user.displayName,
+        lastName: user.user.displayName,
+        email: user.user.email,
+        password: '',
+        birthday: '',
+        gender: '',
+      });
+      this.dataUser.userDataLogin({
         photoURL: user.user.photoURL,
         name: user.user.displayName,
         lastName: user.user.displayName,

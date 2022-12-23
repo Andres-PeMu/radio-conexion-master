@@ -9,13 +9,14 @@ export class CommentsService {
 
   constructor(private firestore: Firestore) { }
 
-  async addComment(comment: Comment) {
+  async addComment(comment) {
     const commentsRef = collection(this.firestore, `${comment.id.toString()}`);
     await setDoc(doc(commentsRef), {
       id: comment.id,
       photoURL: comment.photoURL,
       name: comment.name,
       lastName: comment.lastName,
+      comment: comment.comment,
     });
   }
 

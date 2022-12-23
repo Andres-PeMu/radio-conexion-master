@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { Router } from '@angular/router';
-import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
+import { UserService } from 'src/app/services/firebase/fireStore/user.service';
 @Component({
   selector: 'app-with-google',
   templateUrl: './with-google.component.html',
@@ -12,7 +12,7 @@ export class WithGoogleComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private firestore: FirestoreService,
+    private firestore: UserService,
   ) { }
 
   ngOnInit() {}

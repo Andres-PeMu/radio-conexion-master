@@ -8,6 +8,7 @@ import { NewsCardComponent } from './news-card.component';
 import { NewsCardRoutingModule } from './news-card-routing.module';
 import { CardMenuEllipsisModule } from '../card-menu-ellipsis/card-menu-ellipsis.module';
 import { ModalNewNewsModule } from '../modal-new-news/modal-new-news.module';
+import { CommentTerminalOutModule } from '../comment-terminal-out/comment-terminal-out.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ModalNewNewsModule } from '../modal-new-news/modal-new-news.module';
         ReactiveFormsModule,
         IonicModule,
         CardMenuEllipsisModule,
-        ModalNewNewsModule
+        ModalNewNewsModule,
+        CommentTerminalOutModule
     ]
 })
 export class NewsCardModule { }

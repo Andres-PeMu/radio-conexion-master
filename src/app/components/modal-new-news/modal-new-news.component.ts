@@ -20,7 +20,7 @@ export class ModalNewNewsComponent implements OnInit {
   messageError = '';
   loading = false;
   name: string;
-  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  message = '';
 
   constructor(
     private fb: FormBuilder,

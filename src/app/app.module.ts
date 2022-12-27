@@ -19,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
-  // eslint-disable-next-line max-len
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

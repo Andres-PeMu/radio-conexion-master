@@ -1,5 +1,5 @@
 <ion-item>
-  <ion-badge slot="end">{{ numberComments }}</ion-badge>
+  <app-badge [num]="commentsNumber" *appRecarga="commentsNumber" ></app-badge>
   <ion-icon size="small" button="true" name="terminal-outline" slot="end" [id]="dat.id + dat.id"></ion-icon>
 </ion-item>
 <ion-modal id="example-modal" #modal [trigger]="dat.id + dat.id">

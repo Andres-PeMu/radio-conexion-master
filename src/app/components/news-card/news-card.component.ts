@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
 
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import News from 'src/app/interface/News.interface';
 export class NewsCardComponent implements OnInit {
   @Input() data= [];
   @ViewChild(IonModal) modal: IonModal;
+  numCommt;
   constructor(
     private firestoreService: FirestoreService,
     private router: Router,
@@ -30,6 +31,10 @@ export class NewsCardComponent implements OnInit {
     .then()
     .catch();
     this.modal.dismiss(dat.id, 'cancel');
+  }
+
+  numberCommentchild(num){
+    this.numCommt = num;
   }
 
 }

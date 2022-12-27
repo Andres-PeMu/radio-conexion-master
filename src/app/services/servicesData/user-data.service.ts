@@ -18,6 +18,7 @@ export class UserDataService {
   constructor() { }
 
   userDataLogin(user: User){
+    console.log(user);
     this.id= user.id;
     this.photoURL= user.photoURL;
     this.name= user.name;

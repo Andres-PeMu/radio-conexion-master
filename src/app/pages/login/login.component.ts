@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DocumentSnapshot } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import User from 'src/app/interface/User.interface';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { FirebaseErrorService } from 'src/app/services/firebase/Error/firebase-error.service';
+import { UserService } from 'src/app/services/firebase/fireStore/user.service';
+import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +25,8 @@ export class LoginComponent implements OnInit {
     private firebaseAuth: AuthService,
     private router: Router,
     private codeError: FirebaseErrorService,
+    private userService: UserService,
+    private dataUser: UserDataService,
   ) {
     this.loginUser = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -28,17 +34,30 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   login() {
     this.loading = true;
+    this.userService.getUser( this.loginUser.value.email.toString() ).then( (user) => {
+      console.log(user.data(), 'nada');
+      const datUser = user.data();
+      const { photoURL, name, lastName, email, password, birthday, gender } = datUser;
+      this.dataUser.userDataLogin({
+        photoURL,
+        name,
+        lastName,
+        email,
+        password,
+        birthday,
+        gender,
+      });
+    });
     this.firebaseAuth.login({
       email: this.loginUser.value.email,
       password: this.loginUser.value.password,
     }).then((user)=>{
       this.loading = false;
-      console.log(user);
-      console.log(user.user.emailVerified);
       if(user.user.emailVerified){
         return this.router.navigate(['/tab0']);
       }

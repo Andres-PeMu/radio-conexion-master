@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Firestore, collection, doc, getDoc, setDoc, } from '@angular/fire/firestore';
 
 import User from 'src/app/interface/User.interface';
+import { DataSnapshot } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +28,10 @@ export class UserService {
       });
     }
   }
+
+  async getUser(email){
+    const newsRef = doc(this.firestore, 'users', `${email.toString()}`);
+    return await getDoc(newsRef);
+  }
+
 }

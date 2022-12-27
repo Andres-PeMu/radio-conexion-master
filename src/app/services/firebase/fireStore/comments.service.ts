@@ -24,11 +24,9 @@ export class CommentsService {
   }
 
   getComment(comment) {
-    console.log(comment);
     const commentsRef = collection(this.firestore, `${comment.id.toString()}`);
     return collectionData(commentsRef, { idField: 'id' }) as Observable<any>;
   }
-
 
 }
 

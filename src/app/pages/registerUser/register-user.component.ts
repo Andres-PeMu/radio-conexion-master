@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { FirebaseErrorService } from 'src/app/services/firebase/Error/firebase-error.service';
-
+import { UserService } from 'src/app/services/firebase/fireStore/user.service';
+import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -19,8 +20,10 @@ export class RegisterUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private firebaseAuth: AuthService,
+    private userService: UserService,
     private router: Router,
     private codeError: FirebaseErrorService,
+    private dataUser: UserDataService,
   ) {
     this.registerUser = this.fb.group({
       name: ['', Validators.required],
@@ -32,10 +35,29 @@ export class RegisterUserComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   register() {
     this.loading = true;
+    this.userService.addUser({
+      photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      name: this.registerUser.value.name,
+      lastName: this.registerUser.value.lastname,
+      email: this.registerUser.value.email,
+      password: this.registerUser.value.password,
+      birthday: this.registerUser.value.birthday,
+      gender: this.registerUser.value.genders,
+    });
+    this.dataUser.userDataLogin({
+      photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      name: this.registerUser.value.name,
+      lastName: this.registerUser.value.lastname,
+      email: this.registerUser.value.email,
+      password: this.registerUser.value.password,
+      birthday: this.registerUser.value.birthday,
+      gender: this.registerUser.value.genders,
+    });
     this.firebaseAuth.register({
       email: this.registerUser.value.email,
       password: this.registerUser.value.password,

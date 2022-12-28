@@ -4,6 +4,8 @@ import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import News from 'src/app/interface/News.interface';
+import { CommentsService } from 'src/app/services/firebase/fireStore/comments.service';
+import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 
 @Component({
   selector: 'app-news-card',
@@ -14,9 +16,12 @@ export class NewsCardComponent implements OnInit {
   @Input() data= [];
   @ViewChild(IonModal) modal: IonModal;
   numCommt;
+  like: boolean;
   constructor(
     private firestoreService: FirestoreService,
     private router: Router,
+    private commentService: CommentsService,
+    private dataUser: UserDataService,
   ) { }
 
   ngOnInit() {}

@@ -3,6 +3,7 @@ import { IonModal } from '@ionic/angular';
 import News from '../../interface/news.interface';
 import { CommentsService } from 'src/app/services/firebase/fireStore/comments.service';
 import { UserDataService } from 'src/app/services/servicesData/user-data.service';
+import { exists } from 'fs';
 
 @Component({
   selector: 'app-comment-terminal-out',
@@ -15,6 +16,7 @@ export class CommentTerminalOutComponent implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
   comments;
   commentsNumber;
+  likeTrue;
 
   constructor(
     private commentsService: CommentsService,
@@ -28,6 +30,10 @@ export class CommentTerminalOutComponent implements OnInit {
       this.comments = comments;
       this.commentsNumber = comments.length;
     });
+    this.commentsService.getlike({
+      email: this.dataUser.email,
+      id: this.dat.id,
+    }).then(e => this.likeTrue = e.exists);
   }
 
   save(dat: News) {
@@ -41,5 +47,17 @@ export class CommentTerminalOutComponent implements OnInit {
     });
     this.numberComments.emit(this.comments.length);
   }
+
+  newsLike(dat){
+    this.commentsService.addLike({
+      id: dat.id,
+      photoURL: this.dataUser.photoURL,
+      name: this.dataUser.name,
+      lastName: this.dataUser.lastName,
+      email: this.dataUser.email
+    });
+    this.likeTrue = !this.likeTrue;
+  }
+
 }
 

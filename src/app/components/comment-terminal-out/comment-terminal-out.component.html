@@ -22,22 +22,20 @@
       <ion-toolbar>
         <ion-title>Modal</ion-title>
         <ion-buttons slot="end">
-          <ion-button (click)="save(dat)">Guardar</ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
           <ion-button (click)="modalComment.dismiss()">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <form [formGroup]="commentUser" (ngSubmit)="save(dat)">
+        <form [formGroup]="commentUser">
           <ion-item color="white">
             <ion-label position="floating">comentario:</ion-label>
-            <ion-input type="text" required formControlName="comment" name="comment"></ion-input>
+            <ion-textarea type="text" required formControlName="comment" name="comment"></ion-textarea>
             <ion-text color="danger"
               *ngIf="commentUser.get('comment').hasError('required') && commentUser.get('comment').touched">
-              El comentario es requerido</ion-text>
+              El comentario es requerido
+            </ion-text>
             <ion-button expand="block" class='ion-margin-top' type="submit" [disabled]="commentUser.invalid"
               (click)="save(dat)">
               <p>siguiente</p>

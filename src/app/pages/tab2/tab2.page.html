@@ -1,11 +1,14 @@
-<ion-card>
-  <img alt="Silhouette of mountains" [src]=" dataService.image " />
-  <ion-card-header>
-    <ion-card-title>{{ dataService.title }}</ion-card-title>
-    <ion-card-subtitle>{{ dataService.subtitle }}</ion-card-subtitle>
-  </ion-card-header>
+<ion-content>
+  <ion-card>
+    <img alt="Silhouette of mountains" [src]=" dataService.image " />
+    <ion-card-header>
+      <ion-card-title>{{ dataService.title }}</ion-card-title>
+      <ion-card-subtitle>{{ dataService.subtitle }}</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-card-content>
-    {{ dataService.description }}
-  </ion-card-content>
-</ion-card>
+    <ion-card-content>
+      {{ dataService.description }}
+    </ion-card-content>
+  </ion-card>
+  <app-comment-terminal-out></app-comment-terminal-out>
+</ion-content>

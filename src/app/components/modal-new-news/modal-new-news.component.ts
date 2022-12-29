@@ -56,6 +56,7 @@ export class ModalNewNewsComponent implements OnInit {
       this.messageError = this.codeError.firebaseError(error.code);
       this.isOpen = true;
     });
+    this.registerNewNews.reset();
   }
 
   cancel() {

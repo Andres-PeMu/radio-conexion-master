@@ -24,7 +24,6 @@ export class CardMenuEllipsisComponent implements OnInit {
   ngOnInit() {}
 
   detailNews(dat: News){
-    console.log(dat);
     this.dataService.cardMenuEllipsis(dat);
     this.router.navigate(['tab0/tab2']);
     this.modal.dismiss(null, 'cancel');

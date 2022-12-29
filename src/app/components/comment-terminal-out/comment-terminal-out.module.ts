@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CommentTerminalOutRoutingModule } from './comment-terminal-out-routing.module';
@@ -20,6 +20,7 @@ import { RecargaDirective } from 'src/app/directives/recarga.directive';
     CommentTerminalOutRoutingModule,
     IonicModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommentTerminalOutComponent,

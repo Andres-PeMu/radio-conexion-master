@@ -15,7 +15,6 @@ export class ModalSearchComponent implements OnInit {
 
   ngOnInit() {
     this.firestoreService.getNews().subscribe(news => {
-      console.log(news);
       this.data= news;
     });
   }

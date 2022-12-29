@@ -11,7 +11,13 @@ import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule, LoginRoutingModule, ReactiveFormsModule, WithGoogleModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    LoginRoutingModule,
+    ReactiveFormsModule,
+    WithGoogleModule],
   declarations: [LoginComponent],
   exports: [LoginComponent]
 })

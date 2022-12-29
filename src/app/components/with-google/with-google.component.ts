@@ -23,7 +23,7 @@ export class WithGoogleComponent implements OnInit {
     this.authService.loginWinthGoogle()
     .then((user) =>{
       this.firestore.addUser({
-        photoURL: user.user.photoURL,
+        photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
         name: user.user.displayName,
         lastName: user.user.displayName,
         email: user.user.email,

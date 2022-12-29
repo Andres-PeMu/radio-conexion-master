@@ -7,6 +7,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 })
 export class BadgeComponent implements OnInit {
   @Input() num;
+  @Input() colore;
 
   constructor() {}
 

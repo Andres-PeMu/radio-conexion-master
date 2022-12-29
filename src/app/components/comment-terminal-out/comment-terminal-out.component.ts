@@ -3,7 +3,7 @@ import { IonModal } from '@ionic/angular';
 import News from '../../interface/news.interface';
 import { CommentsService } from 'src/app/services/firebase/fireStore/comments.service';
 import { UserDataService } from 'src/app/services/servicesData/user-data.service';
-import { exists } from 'fs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-comment-terminal-out',
@@ -13,15 +13,25 @@ import { exists } from 'fs';
 export class CommentTerminalOutComponent implements OnInit {
   @Input() dat: News;
   @Output() numberComments = new EventEmitter();
-  @ViewChild(IonModal) modal: IonModal;
+  @ViewChild(IonModal) modalComment: IonModal;
+  @ViewChild(IonModal) modalLike: IonModal;
+  commentUser: FormGroup;
   comments;
   commentsNumber;
+  likes;
+  likesNumber;
   likeTrue;
+  colore = 'danger';
 
   constructor(
+    private fb: FormBuilder,
     private commentsService: CommentsService,
     private dataUser: UserDataService,
-  ) { }
+  ) {
+    this.commentUser = this.fb.group({
+      comment: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit() {
     this.commentsService.getComment({
@@ -30,10 +40,16 @@ export class CommentTerminalOutComponent implements OnInit {
       this.comments = comments;
       this.commentsNumber = comments.length;
     });
-    this.commentsService.getlike({
+    this.commentsService.getLike({
       email: this.dataUser.email,
       id: this.dat.id,
     }).then(e => this.likeTrue = e.exists);
+    this.commentsService.getLikes({
+      id: this.dat.id,
+    }).subscribe(comments => {
+      this.likes = comments;
+      this.likesNumber = comments.length;
+    });
   }
 
   save(dat: News) {
@@ -42,10 +58,11 @@ export class CommentTerminalOutComponent implements OnInit {
       photoURL: this.dataUser.photoURL,
       name: this.dataUser.name,
       lastName: this.dataUser.lastName,
-      comment: 'todo funciona bien',
+      comment: this.commentUser.value.comment,
       email: this.dataUser.email
     });
     this.numberComments.emit(this.comments.length);
+    this.commentUser.reset();
   }
 
   newsLike(dat){

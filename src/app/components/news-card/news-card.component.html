@@ -9,11 +9,11 @@
   <img alt="Silhouette of mountains" src="{{dat.image}}" />
   <ion-card-header>
     <ion-item>
-      <ion-card-subtitle>{{dat.subtitle}}</ion-card-subtitle>
       <app-comment-terminal-out slot="end" size="small" [dat]="dat" (numberComments)="numberCommentchild($event)" ></app-comment-terminal-out>
     </ion-item>
   </ion-card-header>
   <ion-card-content>
+    <ion-card-subtitle>{{dat.subtitle}}</ion-card-subtitle>
     {{dat.summaryDescription}}
   </ion-card-content>
 </ion-card>

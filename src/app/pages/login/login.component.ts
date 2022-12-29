@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DocumentSnapshot } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import User from 'src/app/interface/User.interface';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { FirebaseErrorService } from 'src/app/services/firebase/Error/firebase-error.service';
 import { UserService } from 'src/app/services/firebase/fireStore/user.service';
@@ -40,7 +38,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     this.userService.getUser( this.loginUser.value.email.toString() ).then( (user) => {
-      console.log(user.data(), 'nada');
       const datUser = user.data();
       const { photoURL, name, lastName, email, password, birthday, gender } = datUser;
       this.dataUser.userDataLogin({
@@ -66,7 +63,6 @@ export class LoginComponent implements OnInit {
       }
     }).catch((error)=>{
       this.loading = false;
-      console.log(error.code);
       this.messageError = this.codeError.firebaseError(error.code);
       this.isOpen = true;
     });

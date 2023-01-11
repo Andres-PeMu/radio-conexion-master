@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/firebase/fireStore/user.service';
 import { UserDataService } from 'src/app/services/servicesData/user-data.service';
+import { LocalStorageUserService } from 'src/app/services/localStorage/user.service';
 @Component({
   selector: 'app-with-google',
   templateUrl: './with-google.component.html',
@@ -15,6 +16,7 @@ export class WithGoogleComponent implements OnInit {
     private router: Router,
     private firestore: UserService,
     private dataUser: UserDataService,
+    private localStorageUserService: LocalStorageUserService
   ) { }
 
   ngOnInit() {}
@@ -22,6 +24,15 @@ export class WithGoogleComponent implements OnInit {
   googleAuth(){
     this.authService.loginWinthGoogle()
     .then((user) =>{
+      this.localStorageUserService.postItem({
+        photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+        name: user.user.displayName,
+        lastName: user.user.displayName,
+        email: user.user.email,
+        password: '',
+        birthday: '',
+        gender: '',
+      });
       this.firestore.addUser({
         photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
         name: user.user.displayName,
@@ -32,7 +43,7 @@ export class WithGoogleComponent implements OnInit {
         gender: '',
       });
       this.dataUser.userDataLogin({
-        photoURL: user.user.photoURL,
+        photoURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
         name: user.user.displayName,
         lastName: user.user.displayName,
         email: user.user.email,

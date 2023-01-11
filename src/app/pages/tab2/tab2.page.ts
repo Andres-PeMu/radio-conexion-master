@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import News from 'src/app/interface/News.interface';
 import { CommentsService } from 'src/app/services/firebase/fireStore/comments.service';
+import { DetailService } from 'src/app/services/localStorage/detail.service';
 import { DataService } from 'src/app/services/servicesData/data.service';
 import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 
@@ -18,16 +19,19 @@ export class Tab2Page implements OnInit{
   likes;
   likesNumber;
   likeTrue;
+  dataDetail;
 
   constructor(
     public dataService: DataService,
     private fb: FormBuilder,
     private commentsService: CommentsService,
-    private dataUser: UserDataService,
+    private detailService: DetailService,
   ) {
     this.commentUser = this.fb.group({
       comment: ['', [Validators.required]],
     });
+    this.dataDetail = this.detailService.getItem();
+    this.dataService.cardMenuEllipsis(this.dataDetail);
   }
 
   ngOnInit(){
@@ -37,10 +41,6 @@ export class Tab2Page implements OnInit{
       this.comments = comments;
       this.commentsNumber = comments.length;
     });
-    this.commentsService.getLike({
-      email: this.dataUser.email,
-      id: this.dataService.id,
-    }).then(e => this.likeTrue = e.exists);
     this.commentsService.getLikes({
       id: this.dataService.id,
     }).subscribe(comments => {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firebase/fireStore/Firestore.service';
-
-import { Router } from '@angular/router';
+import { LocalStorageUserService } from 'src/app/services/localStorage/user.service';
+import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,16 +13,26 @@ export class Tab1Page implements OnInit {
   data= [];
   isModalOpen = false;
 
-
-
   constructor(
     private firestoreService: FirestoreService,
-    private router: Router,
+    private localStorageUserService: LocalStorageUserService,
+    private dataUser: UserDataService
     ) {}
 
   ngOnInit(): void {
     this.firestoreService.getNews().subscribe(news => {
       this.data= news;
+    });
+    const datUser = this.localStorageUserService.getItem();
+    const { photoURL, name, lastName, email, password, birthday, gender } = datUser;
+    this.dataUser.userDataLogin({
+      photoURL,
+      name,
+      lastName,
+      email,
+      password,
+      birthday,
+      gender,
     });
   }
 

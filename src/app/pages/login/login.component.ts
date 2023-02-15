@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/firebase/auth/auth.service';
 import { FirebaseErrorService } from 'src/app/services/firebase/Error/firebase-error.service';
 import { UserService } from 'src/app/services/firebase/fireStore/user.service';
+import { LocalStorageUserService } from 'src/app/services/localStorage/user.service';
 import { UserDataService } from 'src/app/services/servicesData/user-data.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private codeError: FirebaseErrorService,
     private userService: UserService,
     private dataUser: UserDataService,
+    private localStorageUserService: LocalStorageUserService,
   ) {
     this.loginUser = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,6 +42,15 @@ export class LoginComponent implements OnInit {
     this.userService.getUser( this.loginUser.value.email.toString() ).then( (user) => {
       const datUser = user.data();
       const { photoURL, name, lastName, email, password, birthday, gender } = datUser;
+      this.localStorageUserService.postItem({
+        photoURL,
+        name,
+        lastName,
+        email,
+        password: '',
+        birthday,
+        gender,
+      });
       this.dataUser.userDataLogin({
         photoURL,
         name,

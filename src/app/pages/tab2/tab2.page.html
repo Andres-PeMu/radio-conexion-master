@@ -1,5 +1,7 @@
-<ion-content>
-  <ion-card>
+<ion-content [fullscreen]="true" class=" ion-padin-top ">
+  <br/>
+  <br/>
+  <ion-card class=" ion-padin-top ">
     <img alt="Silhouette of mountains" [src]=" dataService.image " />
     <ion-card-header>
       <ion-card-title>{{ dataService.title }}</ion-card-title>
@@ -10,4 +12,17 @@
       {{ dataService.description }}
     </ion-card-content>
   </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor=" let datcomment of comments">
+      <ion-avatar slot="start">
+        <ion-img src="{{ datcomment.photoURL }}"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ datcomment.name }}</h2>
+        <ion-textarea class=" ion-margin-top " disabled="true">{{ datcomment.comment }}</ion-textarea>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

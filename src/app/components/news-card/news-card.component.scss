@@ -1,11 +1,35 @@
-ion-card{
-    ion-item{
-      img{
+ :host{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ion-card {
+    @media (min-width: 35px) and (max-width: 768px) {
+      width: 100%;
+      ion-item {
+        img {
+          height: 35px;
+          margin: 0;
+          padding: 0;
+        }
+        ion-card-title {
+          font-size: 20px;
+          margin-left: 8px;
+        }
+        ion-select::part(icon) {
+          display: none !important;
+        }
+      }
+    }
+    width: 70%;
+    height: 250px;
+    ion-item {
+      img {
         height: 35px;
         margin: 0;
         padding: 0;
       }
-      ion-card-title{
+      ion-card-title {
         font-size: 20px;
         margin-left: 8px;
       }
@@ -13,4 +37,5 @@ ion-card{
         display: none !important;
       }
     }
+  }
 }

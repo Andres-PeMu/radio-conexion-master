@@ -3,13 +3,14 @@
     <img src="../../../assets/images/conexion sin fondo.png" class="ion-margin ion-padding img-login" />
     <ion-card-title>{{dat.title}}</ion-card-title>
 
-    <app-card-menu-ellipsis slot="end" [dat]="dat" ></app-card-menu-ellipsis>
+    <app-card-menu-ellipsis slot="end" [dat]="dat"></app-card-menu-ellipsis>
 
   </ion-item>
   <img alt="Silhouette of mountains" src="{{dat.image}}" />
   <ion-card-header>
     <ion-item>
-      <app-comment-terminal-out slot="end" size="small" [dat]="dat" (numberComments)="numberCommentchild($event)" ></app-comment-terminal-out>
+      <app-comment-terminal-out slot="end" size="small" [dat]="dat"
+        (numberComments)="numberCommentchild($event)"></app-comment-terminal-out>
     </ion-item>
   </ion-card-header>
   <ion-card-content>
